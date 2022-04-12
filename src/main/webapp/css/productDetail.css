@@ -1,0 +1,49 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Yusei+Magic:regular);
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+}
+
+.productDetail{
+     margin: auto; 
+    font-size: 20px;
+    display: flex;
+}
+
+.productDetail .container-images-productDetail{
+    width: 50%;
+}
+
+.productDetail .container-images-productDetail .imagesProductDetail{
+    padding: 50px;
+}
+
+.productDetail .main-item-productDetail{
+    margin-top: 120px;
+    margin-left: 30px;
+}
+
+.productDetail .main-item-productDetail .sao{
+    margin-top:20px ;
+}
+
+.productDetail .main-item-productDetail .priceProductDetail{
+    margin-top: 10px;
+}
+
+.productDetail .main-item-productDetail .btnCount{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
