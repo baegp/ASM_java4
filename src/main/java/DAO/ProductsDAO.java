@@ -99,7 +99,7 @@ public class ProductsDAO {
     public List<ProductsDTO> searchByName(String name) {
         List<ProductsDTO> List = new ArrayList<ProductsDTO>();
         try {
-            String sql = "SELECT * FROM products where name =?";
+            String sql = "SELECT * FROM products where name like = '%?%' ";
             PreparedStatement pst = connection.prepareStatement(sql);
             pst.setString(1, name);
             ResultSet rst = pst.executeQuery();

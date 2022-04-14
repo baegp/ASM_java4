@@ -58,14 +58,18 @@ public class CartController extends HttpServlet {
                             cart = new Cart();
                         }
                         cart.add(item);
+                    } else if (action.equals("dete")) {
+                        if (cart == null) {
+                            cart = new Cart();
+                        }
+                        cart.dete(item);
                     } else {
                         cart.remove(item);
                     }
                     session.setAttribute("cart", cart);
-              response.sendRedirect("./Cart.jsp");
+                    response.sendRedirect("./Cart.jsp");
 
 //                    request.getRequestDispatcher("Cart.jsp").forward(request, response);
-
                 }
             }
         }

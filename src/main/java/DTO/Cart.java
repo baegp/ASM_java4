@@ -35,6 +35,21 @@ public class Cart {
         }
     }
 
+    public boolean dete(Item item) {
+        try {
+            if (cart.contains(item)) {
+                Item currentItem = cart.get(cart.indexOf(item));
+                currentItem.setSoLuong(currentItem.getSoLuong() - 1);
+            } else {
+                cart.remove(item);
+            }
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean remove(Item item) {
         try {
             if (cart.contains(item)) {

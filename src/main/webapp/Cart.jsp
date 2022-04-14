@@ -37,15 +37,15 @@
                             <li class="item-menu-level-1">
                                 <i id="popup-btn"> <i class="fas fa-search"></i></i>
                                 <div class="popup">
-<!--                                    <div class="popup-content">
-                                        <a href="#"><span class="close-btn">&times;</span></a>
-                                        <div class="khoitim">
-                                            <form method="post"> 
-                                                <input name="searchName" id="search" type="search" placeholder="Search">
-                                                <button type="submit" onclick="clickTimKiem()"> <i class="fas fa-search"> </i></button>
-                                            </form>
-                                        </div>
-                                    </div>-->
+                                    <!--                                    <div class="popup-content">
+                                                                            <a href="#"><span class="close-btn">&times;</span></a>
+                                                                            <div class="khoitim">
+                                                                                <form method="post"> 
+                                                                                    <input name="searchName" id="search" type="search" placeholder="Search">
+                                                                                    <button type="submit" onclick="clickTimKiem()"> <i class="fas fa-search"> </i></button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>-->
                                 </div>
                             </li>
                             <li class="item-menu-level-1">
@@ -161,20 +161,31 @@
                                     </h3>
                                 </div>
                                 <div class="item-sp">
-                                    <input type="number" value="<%=item.getSoLuong()%>" min="1" max="10"/>
+                                    <form action="CartController" method="post">
+                                        <input type="hidden" name="id" value="<%=item.getMaSp()%>"/>
+                                        <button style="padding: 2px 5px" type="submit" name="cart" value="dete">-</button>
+                                        <button style="padding: 2px 5px" ><%=item.getSoLuong()%></button>
+                                        <button style="padding: 2px 5px" type="submit" name="cart" value="add">+</button>
+                                    </form>
                                 </div>
                                 <div class="item-sp ">
                                     <h3><fmt:formatNumber type="number" maxFractionDigits="2" value="<%= item.getPrice() * item.getSoLuong()%>"/></h3>
                                 </div>
                                 <div class="item-sp">
-                                    xoa
+                                    <form action="CartController" method="post">
+                                        <input type="hidden" name="id" value="<%=item.getMaSp()%>"/>
+                                         
+                                        <button style="padding: 2px 5px; border-radius: 8px" type="submit" name="cart" value="remove" class="btn btnPrimary btn-block">
+                                           x
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <% }
                         }%>
-                        
+
 
                     <div class="thanh-toan">
                         <div class="tt-thanh-toan" ></div>

@@ -37,7 +37,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
         <!-- CSS Files -->
         <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
-        <!--<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />-->
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
@@ -206,7 +205,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit"  class="btn btn-primary">Add category</button>
+                                                <button id="mybutton" type="submit"  class="btn btn-primary">Add category</button>
                                             </div>
                                         </div>
                                     </div>
@@ -409,11 +408,9 @@
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="./assets/js/material-dashboard.min.js?v=3.0.1"></script>
 
-<!--        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script>$('#invokesToastMessage').click(function () {
-                                    toastr.success('message', 'title');
-                                });</script>-->
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.toast.min.js"></script>
     </body>
 
 </html>
