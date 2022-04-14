@@ -17,17 +17,12 @@
         <title>JSP Page</title>
         <script src="https://kit.fontawesome.com/f20d460fd9.js" crassarigin="anonymou"></script>
         <link rel="stylesheet" href="./css/cart.css">
+        <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">-->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fyuck.css">
 
     </head>
     <body>
 
-        <%
-//            Cart cart = (Cart) session.getAttribute("cart");
-//            if (cart != null) {
-//                ArrayList<Item> ds = cart.getCart();
-//                for (Item mh : ds) {
-//                    Car sp = CarDao.findProductById(mh.getMaSp());
-        %>
 
         <header id="header">
             <nav class="nav-bar">
@@ -39,54 +34,47 @@
                     </div>
                     <div class="menu">
                         <ul class="menu-level-1">
-                            <li onclick="showSearch()" class="item-menu-level-1">
-                                <a href="#"><i class="fas fa-search"></i></a>
-                                <div id="mark">
-                                    <input type="search" name="" id="search">
-                                    <button onclick="timKiemSp()"><i class="fas fa-search"></i></button>
+                            <li class="item-menu-level-1">
+                                <i id="popup-btn"> <i class="fas fa-search"></i></i>
+                                <div class="popup">
+<!--                                    <div class="popup-content">
+                                        <a href="#"><span class="close-btn">&times;</span></a>
+                                        <div class="khoitim">
+                                            <form method="post"> 
+                                                <input name="searchName" id="search" type="search" placeholder="Search">
+                                                <button type="submit" onclick="clickTimKiem()"> <i class="fas fa-search"> </i></button>
+                                            </form>
+                                        </div>
+                                    </div>-->
                                 </div>
                             </li>
                             <li class="item-menu-level-1">
-                                <a href="HomePage.jsp" id="home" class="title-item-menu-level-1">HOME</a>
+                                <a href="${pageContext.request.contextPath}/HomePageController" id="home" class="title-item-menu-level-1">HOME</a>
                             </li>
                             <li onclick="showMenu2()" class="item-menu-level-1">
-                                <a href="#" class="title-item-menu-level-1">DANH MỤC SẢN PHẨM</a>
+                                <span class="title-item-menu-level-1">DANH MỤC SẢN PHẨM</span>
                                 <i class="fas fa-angle-down"></i>
                                 <ul id="menu2-dssp" class="menu-level-2">
                                     <div class="khoi-1">
                                         <h3>DANH MỤC SẢN PHẨM</h3>
-                                        <li class="item-menu-level-2">
-                                            <i class="fas fa-angle-right"></i>
-                                            <a href="#" class="title-item-menu-level-2">APPLE</a>
-                                        </li>
-                                        <li class="item-menu-level-2">
-                                            <i class="fas fa-angle-right"></i>
-                                            <a href="#" class="title-item-menu-level-2">SAMSUNG</a>
-                                        </li>
-                                        <li class="item-menu-level-2">
-                                            <i class="fas fa-angle-right"></i>
-                                            <a href="#" class="title-item-menu-level-2">XIAOMI</a>
-                                        </li>
-                                        <li class="item-menu-level-2">
-                                            <i class="fas fa-angle-right"></i>
-                                            <a href="#" class="title-item-menu-level-2">VSMART</a>
-                                        </li>
-                                        <li class="item-menu-level-2">
-                                            <i class="fas fa-angle-right"></i>
-                                            <a href="#" class="title-item-menu-level-2">LAPTOP</a>
-                                        </li>
+                                        <c:forEach items="${listCat}" var="cat">
+                                            <li class="item-menu-level-2">
+                                                <i class="fas fa-angle-right"></i>
+                                                <a href="${pageContext.request.contextPath}/HomePageController?idCat=${cat.getId()}" class="title-item-menu-level-2">${cat.getName()}</a>
+                                            </li>
+                                        </c:forEach>
                                     </div>
                                     <div class="hang">
                                         <div class="img-hang">
-                                            <img src="https://cdn.tgdd.vn/Products/Images/42/228743/iphone-12-pro-max-vang-new-600x600-600x600.jpg"
+                                            <img src="https://shop.mixigaming.com/wp-content/uploads/2021/01/VUVU7648-2048x1365.jpg"
                                                  alt="">
                                         </div>
                                         <div class="img-hang">
-                                            <img src="https://cdn.tgdd.vn/Products/Images/42/226264/xiaomi-mi-11-xanhduong-600x600-600x600.jpg"
+                                            <img src="https://shop.mixigaming.com/wp-content/uploads/2021/01/binh-giu-nhiet-mixi-4-2048x1365.jpg"
                                                  alt="">
                                         </div>
                                         <div class="img-hang">
-                                            <img src="https://cdn.tgdd.vn/Products/Images/42/234308/samsung-galaxy-s21-ultra-256gb-den-600x600-1-600x600.jpg"
+                                            <img src="https://shop.mixigaming.com/wp-content/uploads/2021/01/2-2048x1366.jpg"
                                                  alt="">
                                         </div>
                                     </div>
@@ -100,17 +88,27 @@
 
                     <div class="mua-hang">
                         <div class="sdt">
-                            <i class="fas fa-user-cog"></i>
-                            <a href="../html/admin.html">ADMIN</a>
-                        </div>
-                        <div id="cc" class="gio-hang">
-                            <a href="#">GIỎ HÀNG</a>
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-user-cog">
+                                <div class="avbcs" >
+                                    <form action="UserController" method="post">          
+                                        <button style="border-radius: 3px;padding: 3px; margin-top: 5px; background-color: #007784; outline: none; color: #FFF; border: none" class="btn bg-gradient-info w-100" >Log out</button>
+                                    </form>
+                                </div>
+
+                            </i>
+
+                        </div>      
+                        <span>xin chao: ${username}</span>
+
+                        <div style="border-left: 2px solid #555" id="cc" class="gio-hang">
+                            <a href="./Cart.jsp">GIỎ HÀNG</a>
+                            <a href="./Cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
+        <%--<c:import url="http://localhost:8080/ASM_java4/Header.jsp" />--%>
 
         <main>
             <div class="danh-sach-sp">
@@ -139,87 +137,101 @@
                         </div>
                     </div>
 
-                    <div id="thong-tin-sp">
-                        <div class="san-pham-mua">
-                            <div class="item-sp">
-                                <div class="anh-san-pham">
-                                    <img src="https://shop.mixigaming.com/wp-content/uploads/2022/02/VUVU4714-300x400.jpg" alt="" />
-
+                    <%
+                        Cart cart = (Cart) session.getAttribute("cart");
+                        if (cart != null) {
+                            ArrayList<Item> items = cart.getCart();
+                            for (Item item : items) {
+                    %>
+                    <form action="CartController" method="post">
+                        <div id="thong-tin-sp">
+                            <div class="san-pham-mua">
+                                <input type="hidden" class="form-control" name="maSp" id="maSp">
+                                <div class="item-sp">
+                                    <div class="anh-san-pham">
+                                        <img src="<%=item.getImage()%>" alt="" />
+                                    </div>
+                                </div>
+                                <div class="item-sp">
+                                    <h3><%=item.getName()%></h3>
+                                </div>
+                                <div class="item-sp tien">
+                                    <h3 id="don-gia">
+                                        <fmt:formatNumber type="number" maxFractionDigits="2" value="<%=item.getPrice()%>"/>
+                                    </h3>
+                                </div>
+                                <div class="item-sp">
+                                    <input type="number" value="<%=item.getSoLuong()%>" min="1" max="10"/>
+                                </div>
+                                <div class="item-sp ">
+                                    <h3><fmt:formatNumber type="number" maxFractionDigits="2" value="<%= item.getPrice() * item.getSoLuong()%>"/></h3>
+                                </div>
+                                <div class="item-sp">
+                                    xoa
                                 </div>
                             </div>
-                            <div class="item-sp">
-                                <h3>aa</h3>
-                            </div>
-                            <div class="item-sp tien">
-                                <h3 id="don-gia">3423</h3>
-                            </div>
-                            <div class="item-sp">
-                                <input type="number" name id="so-luong-${i}" value="1" min="1" max="10"/>
-                            </div>
-                            <div class="item-sp ">
-                                <h3>212</h3>
-                            </div>
-                            <div class="item-sp">
-                                xoa
-                            </div>
                         </div>
+                    </form>
+                    <% }
+                        }%>
+                        
 
-                        <div class="thanh-toan">
-                            <div class="tt-thanh-toan" ></div>
-                            <div class="tt-thanh-toan" ></div>
-                            <div class="tt-thanh-toan" ></div>
-                            <div class="tt-thanh-toan">
-                                <h3>Tổng</h3>
-                            </div>
-                            <div class="tt-thanh-toan tien">
-                                <h3>{formatMoney(Number(sum))}</h3>
-                            </div>
-                            <div class="tt-thanh-toan"> </div>
+                    <div class="thanh-toan">
+                        <div class="tt-thanh-toan" ></div>
+                        <div class="tt-thanh-toan" ></div>
+                        <div class="tt-thanh-toan" ></div>
+                        <div class="tt-thanh-toan">
+                            <h3>Tổng</h3>
                         </div>
+                        <div class="tt-thanh-toan tien">
+                            <h3><fmt:formatNumber type="number" maxFractionDigits="2" value="<%= cart.getTongTien()%>"/></h3>
+                        </div>
+                        <div class="tt-thanh-toan"> </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="infor-khach-hang">
-                <div class="container-khach-hang">
-                    <div class="content-khach-hang">
-                        <h1>Mua hàng</h1>
-                        <div class="form-khach-hang">
-                            <form action="" id="form-infor">
-                                <div class="thong-tin ">
-                                    <label for="ho-ten">Họ tên</label>
-                                    <input placeholder="Nhập họ và tên" type="text" name="" id="ho-ten">
-                                    <span class="form-messsage"></span>
-                                </div>
-                                <div class="thong-tin">
-                                    <label for="sdt">Số điện thoại</label>
-                                    <input placeholder="Nhập số điện thoại" type="number" name="" id="sdt">
-                                    <span class="form-messsage"></span>
-                                </div>
-                                <div class="thong-tin">
-                                    <label for="email">Email</label>
-                                    <input placeholder="Nhập email" type="email" name="" id="email">
-                                    <span class="form-messsage"></span>
-                                </div>
-                                <div class="thong-tin">
-                                    <label for="address">Địa chỉ</label>
-                                    <input placeholder="Nhập địa chỉ" type="text" name="" id="address">
-                                    <span class="form-messsage"></span>
-                                </div>
-                                <div class="thong-tin">
-                                    <label for="time-nhan-hang">Thời gian nhận hàng trong ngày 8-18h</label>
-                                    <input placeholder="Nhập thời gian nhận hàng trong ngày" type="text" name=""
-                                           id="time-nhan-hang">
-                                    <span class="form-messsage"></span>
-                                </div>
-                                <button type="submit" class="btn btnPrimary">Mua</button>
-                            </form>
-                        </div>
+        <div class="infor-khach-hang">
+            <div class="container-khach-hang">
+                <div class="content-khach-hang">
+                    <h1>Mua hàng</h1>
+                    <div class="form-khach-hang">
+                        <form action="" id="form-infor">
+                            <div class="thong-tin ">
+                                <label for="ho-ten">Họ tên</label>
+                                <input placeholder="Nhập họ và tên" type="text" name="" id="ho-ten"required>
+                                <span class="form-messsage"></span>
+                            </div>
+                            <div class="thong-tin">
+                                <label for="sdt">Số điện thoại</label>
+                                <input placeholder="Nhập số điện thoại" type="number" name="" id="sdt"required>
+                                <span class="form-messsage"></span>
+                            </div>
+                            <div class="thong-tin">
+                                <label for="email">Email</label>
+                                <input placeholder="Nhập email" type="email" name="" id="email"required>
+                                <span class="form-messsage"></span>
+                            </div>
+                            <div class="thong-tin">
+                                <label for="address">Địa chỉ</label>
+                                <input placeholder="Nhập địa chỉ" type="text" name="" id="address"required>
+                                <span class="form-messsage"></span>
+                            </div>
+                            <div class="thong-tin">
+                                <label for="time-nhan-hang">Thời gian nhận hàng trong ngày 8-18h</label>
+                                <input placeholder="Nhập thời gian nhận hàng trong ngày" type="text" name=""
+                                       id="time-nhan-hang"required>
+                                <span class="form-messsage"></span>
+                            </div>
+                            <button type="submit" class="btn btnPrimary">Mua</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </main>
-        <%--<c:import url="http://localhost:8080/ASM_java4/Footer.jsp" />--%>
+        </div>
+    </main>
+    <%--<c:import url="http://localhost:8080/ASM_java4/Footer.jsp" />--%>
 
-    </body>
+</body>
 </html>

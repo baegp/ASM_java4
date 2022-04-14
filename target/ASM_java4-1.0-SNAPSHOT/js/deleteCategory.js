@@ -2,7 +2,7 @@
 function DeleteCategory(id) {
     console.log("Id delete ", id);
     if (!Number.isNaN(id)) {
-        const obj = {
+        const obj = { 
             "id": id
         }
         fetch('/ASM_java4/AdminCategoryController', {

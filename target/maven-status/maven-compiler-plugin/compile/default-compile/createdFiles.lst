@@ -1,7 +1,7 @@
 DTO\UserDTO.class
 controller\UserController.class
-utils\DBProvider.class
 utils\PasswordHelper.class
-controller\LogoutController.class
 DAO\UserDAO.class
+utils\DBProvider.class
+controller\LogoutController.class
 controller\HomeServlet.class

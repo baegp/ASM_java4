@@ -14,20 +14,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script src="https://kit.fontawesome.com/f20d460fd9.js" crassarigin="anonymou"></script>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fyuck.css">
+
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
     <body>
         <%
-//            String username = (String) session.getAttribute("username");
-//            boolean value = (boolean) session.getAttribute("login");
-//            String role = (String) session.getAttribute("role");
-//
-//            if (value == false) {
-//                response.sendRedirect(request.getContextPath() + "/Login.jsp");
-//            }
-%> 
+            String username = (String) session.getAttribute("username");
+            boolean value = (boolean) session.getAttribute("login");
+            String role = (String) session.getAttribute("role");
+
+            if (value == false) {
+                response.sendRedirect(request.getContextPath() + "/Login.jsp");
+            }
+        %> 
 
         <%--<%=username%>--%>
         <%--<c:import url="http://localhost:8080/ASM_java4/Header.jsp" />--%>
@@ -95,11 +97,19 @@
 
                     <div class="mua-hang">
                         <div class="sdt">
-                            <i class="fas fa-user-cog"></i>
-                            <span>xin chao: ${username}</span>
+                            <i class="fas fa-user-cog">
+                                <div class="avbcs" >
+                                    <form action="UserController" method="post">          
+                                        <button style="border-radius: 3px;padding: 3px; margin-top: 5px; background-color: #007784; outline: none; color: #FFF; border: none" class="btn bg-gradient-info w-100" >Log out</button>
+                                    </form>
+                                </div>
 
-                        </div>
-                        <div id="cc" class="gio-hang">
+                            </i>
+
+                        </div>      
+                        <span>xin chao: ${username}</span>
+
+                        <div style="border-left: 2px solid #555" id="cc" class="gio-hang">
                             <a href="./Cart.jsp">GIỎ HÀNG</a>
                             <a href="./Cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                         </div>
@@ -148,7 +158,7 @@
                         </div>
                         <form action="CartController" method="post">
                             <input type="hidden" name="id" value="${pro.getId()}">
-                            <button value="add" name="cart" type="submit" class="btn btnPrimary">Thêm vào giỏ hàng</button>
+                            <button style="border-radius: 7px;" value="add" name="cart" type="submit" class="btn btnPrimary">Thêm vào giỏ hàng</button>
                         </form>
                     </div>
                 </c:forEach>

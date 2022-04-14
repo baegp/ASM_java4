@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import java.util.Objects;
+
 /**
  *
  * @author tranh
@@ -13,14 +15,14 @@ public class Item {
 
     int maSp;
     int soLuong;
-    String title;
+    String name;
     Float price;
     String image;
 
-    public Item(int maSp, int soLuong, String title, Float price, String image) {
+    public Item(int maSp, int soLuong, String name, Float price, String image) {
         this.maSp = maSp;
         this.soLuong = soLuong;
-        this.title = title;
+        this.name = name;
         this.price = price;
         this.image = image;
     }
@@ -41,12 +43,12 @@ public class Item {
         this.soLuong = soLuong;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Float getPrice() {
@@ -63,6 +65,37 @@ public class Item {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + this.maSp;
+        hash = 43 * hash + this.soLuong;
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + Objects.hashCode(this.price);
+        hash = 43 * hash + Objects.hashCode(this.image);
+        return hash;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (this.maSp != other.maSp) {
+            return false;
+        }
+        return true;
     }
 
 }

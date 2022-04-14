@@ -59,12 +59,10 @@
                 </div>   
                 <form action="CartController" method="post">
                     <input type="hidden" name="id" value="${detail.getId()}">
-                    <button value="add" style="margin-top: 20px; color: #ffffff" type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
+                    <button name="cart" value="add" style="margin-top: 20px; color: #ffffff ; background-color: #007784; border-radius: 7px" type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
                 </form>
             </div>  
-            <!--                <div class="sao">
-                                <i class="fas fa-star" />
-                            </div>-->
+
 
         </div>
         <c:import url="http://localhost:8080/ASM_java4/Footer.jsp" />        

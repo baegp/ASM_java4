@@ -6,6 +6,7 @@
 package DTO;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -46,6 +47,14 @@ public class Cart {
         }
     }
 
+    public float getTong() {
+        float tongTien = 0;
+        for (Item item : cart) {
+            tongTien = item.getSoLuong() * item.getPrice();
+        }
+        return tongTien;
+    }
+
     public float getTongTien() {
         float tongTien = 0;
         for (Item item : cart) {
@@ -54,6 +63,37 @@ public class Cart {
         return tongTien;
     }
 
-//    public public ArrayList<>
+    public ArrayList<Item> getCart() {
+        return cart;
+    }
+
+    public int getSize() {
+        return cart.size();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.cart);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cart other = (Cart) obj;
+        if (!Objects.equals(this.cart, other.cart)) {
+            return false;
+        }
+        return true;
+    }
 
 }
